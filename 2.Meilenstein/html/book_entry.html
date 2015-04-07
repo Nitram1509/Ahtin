@@ -2,40 +2,92 @@
 	<html>
 		<head>	
 		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="..\css\bookLayout.css">
+			<link rel="stylesheet" type="text/css" href="..\css\layout.css">
+		
 			<title>Formular</title>
 		</head>
 		<body>
-		
-		
-			
-			<form action="http://martinakraus.net/createBookEntry.php" method="get">
-				<br>Ihr Vorname:<input type="text" size="8" name="vorname">
-				<br>Ihr Nachname:<input type="text" size="8" name="name" >
-				<br>Titel des Buches:<input type="text" size="8" name="titel" >
-				<br>Buchautor:<input type="text" size="8" name="autor" >
-				<br>ISBN:<input type="number" size="8" name="isbn" >
-				<br>Genre:
-						<input checked=checked  type="checkbox" name="Horror" value="Horror">Horror
-						<input type="checkbox" name="genre" value="Psycho">Psycho
-						<input type="checkbox" name="genre" value="Krimi">Krimi
-						<input type="checkbox" name="genre" value="Doku">Doku
-						<input type="checkbox" name="genre" value="Komoedie">Kom&ouml;die
-						<input type="checkbox" name="genre" value="Romanze">Romanze
-				<br>Art des Buches:
-					<select name="art">
-						<option  value="eBook">eBook</option>
-						<option value="Newspaper">Newspaper</option>
-						<option value="Taschentuch">Taschentuch</option>
-						<option value="Lexikon">Lexikon</option>
-						<option selected value="Hardcover">Hardcover</option>
-						<option value="Paperback">Paperback</option>
-					</select>
-				<br>Kapitel:<input type="number" size="8" name="kapitel" >
-				<br>Erscheinungsjahr:<input type="number" size="8" name="jahr" >
-				<br>Auflage:<input type="number" size="8" name="auflage" >
-				<br>Favorit makieren:<input type="checkbox" size="8" name="filmfavorit" >Favo
-				<br><input type="submit" value="Formular Senden" >
-			</form>
+			<p id="ueberschrift" class="schriftFarbe">Buch anlegen</p>	
+			<div class="table">
+				<form action="http://martinakraus.net/createBookEntry.php" method="get">
+					
+					<div class="schriftFarbe">
+						<div>Titel des Buches:</div>	
+						<div><input type="text" size="8" name="titel" ></div>
+					</div>
+					<div class="schriftFarbe">
+						<div>Buchautor:</div>			
+						<div><input type="text" size="8" name="autor" ></div>
+					</div>
+					<div class="schriftFarbe">
+						<div>ISBN:</div>				
+						<div><input type="number" size="8" name="isbn" ></div>
+						<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+					</div>
+					
+					<div class="schriftFarbe">
+						<div>Kapitel:</div>			
+						<div><input type="number" size="8" name="kapitel" ></div>
+					</div>
+					<div class="schriftFarbe">
+						<div>Erscheinungsjahr:</div>		
+						<div><input type="number" size="8" name="jahr" ></div>
+					</div>	
+					<div class="schriftFarbe">
+						<div>Auflage:</div>					
+						<div><input type="number" size="8" name="auflage" ></div>
+					</div>	
+					
+					<div class="schriftFarbe">
+						<div>Art des Buches:</div>
+						<div><select name="art">
+								<option  value="eBook">eBook</option>
+								<option value="Newspaper">Newspaper</option>
+								<option value="Taschenbuch">Taschenbuch</option>
+								<option value="Lexikon">Lexikon</option>
+								<option selected value="Hardcover">Hardcover</option>
+								<option value="Paperback">Paperback</option>
+							 </select>
+						</div>
+					</div>	
+					
+					<div class="schriftFarbe">	
+						<div>Genre:</div>
+						<div><input checked="checked" type="checkbox" name="Horror" value="Horror">Horror</div>
+						<div><input type="checkbox" name="genre" value="Psycho">Psycho</div>
+					</div>
+					<div class="schriftFarbe">
+						<div></div>
+						<div><input type="checkbox" name="genre" value="Krimi">Krimi</div>
+						<div><input type="checkbox" name="genre" value="Doku">Doku</div>
+					</div>
+					<div class="schriftFarbe">	
+						<div></div>
+						<div><input type="checkbox" name="genre" value="Komoedie">Kom&ouml;die</div>
+						<div><input type="checkbox" name="genre" value="Romanze">Romanze</div>
+					</div>	
+
+					
+						<div class="schriftFarbe">
+							<div>Ihr Vorname:</div>			
+							<div><input type="text" size="8" name="vorname"></div>
+						</div>
+						<div class="schriftFarbe">
+							<div>Ihr Nachname:</div>		
+							<div><input type="text" size="8" name="name" ></div>
+						</div>
+						<div class="schriftFarbe">	
+							<div>Favorit markieren:</div>	
+							<div><input type="checkbox" size="8" name="filmfavorit" ></div>
+						</div>	
+					
+					
+						<div id=menu class=rahmen><input type="submit" ></div>
+				</form>
+				
+				
+			</div>
 			
 		</body>
 	</html>

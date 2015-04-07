@@ -1,0 +1,16 @@
+body{
+	background-color: rgb(153,217,234);
+	text-align:center;
+	font-family:Arial;
+}
+
+div {
+	margin: 0px auto;
+
+}
+/*Betrifft das Grundsätzliche Layout*/
+div.grundlayout{
+	border-color: black;
+	border-width: 1px;
+	text-align:center;
+}
