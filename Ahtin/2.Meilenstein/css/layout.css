@@ -1,0 +1,38 @@
+body{
+	background-color: rgb(153,217,234);
+	text-align:center;
+	font-family:Arial;
+}
+/*Bezieht sich auf die Überschrift*/
+#ueberschrift{
+	font-size:22px;
+}
+div {
+	margin: 0px auto;
+}
+/*Betrifft das Grundsätzliche Layout*/
+div.grundlayout{
+	border-color: black;
+	border-width: 1px;
+	text-align:center;
+}
+/*Betrifft nur das Titelbild. */
+#picture{
+	width: 400px;
+    height: 245px;
+	background-color: rgb(0,0,0);
+}
+/*Für den Rahmen für das Titelbild und das Menü*/
+.rahmen{
+	border-color: rgb(63,72,204);
+	border-width: 10px;
+	border-style: solid;
+}
+/*Ist für das Menü zuständig*/
+#menu{
+	background-color: rgb(0,162,232);	
+	width:100px;
+}
+a:hover {
+    background-color: rgb(63,72,204);
+}

@@ -1,0 +1,41 @@
+<DOCTYPE html>
+	<html>
+		<head>	
+		<meta charset="utf-8">
+			<title>Formular</title>
+		</head>
+		<body>
+		
+		
+			
+			<form action="http://martinakraus.net/createBookEntry.php" method="get">
+				<br>Ihr Vorname:<input type="text" size="8" name="vorname">
+				<br>Ihr Nachname:<input type="text" size="8" name="name" >
+				<br>Titel des Buches:<input type="text" size="8" name="titel" >
+				<br>Buchautor:<input type="text" size="8" name="autor" >
+				<br>ISBN:<input type="number" size="8" name="isbn" >
+				<br>Genre:
+						<input checked=checked  type="checkbox" name="Horror" value="Horror">Horror
+						<input type="checkbox" name="genre" value="Psycho">Psycho
+						<input type="checkbox" name="genre" value="Krimi">Krimi
+						<input type="checkbox" name="genre" value="Doku">Doku
+						<input type="checkbox" name="genre" value="Komoedie">Kom&ouml;die
+						<input type="checkbox" name="genre" value="Romanze">Romanze
+				<br>Art des Buches:
+					<select name="art">
+						<option  value="eBook">eBook</option>
+						<option value="Newspaper">Newspaper</option>
+						<option value="Taschentuch">Taschentuch</option>
+						<option value="Lexikon">Lexikon</option>
+						<option selected value="Hardcover">Hardcover</option>
+						<option value="Paperback">Paperback</option>
+					</select>
+				<br>Kapitel:<input type="number" size="8" name="kapitel" >
+				<br>Erscheinungsjahr:<input type="number" size="8" name="jahr" >
+				<br>Auflage:<input type="number" size="8" name="auflage" >
+				<br>Favorit makieren:<input type="checkbox" size="8" name="filmfavorit" >Favo
+				<br><input type="submit" value="Formular Senden" >
+			</form>
+			
+		</body>
+	</html>
