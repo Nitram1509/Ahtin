@@ -3,79 +3,55 @@
 	<script>
 function validateForm() {
 
-	var returnWert = true;
-	var focused = false;
+	var returnWert = true; // Variable für den Rückgabewert, welcher am Ende der Methode returned wird.
+	var focused = false; // Variable, die erfasst, ob bereits ein Feld fokussiert wurde (der erste Auftretende fehlder soll fokussiert werden.)
 
-	var buchstaben = /^[a-zA-Z]+$/;
-	var zahlen = /^[0-9]+$/;
+	var buchstaben = /[a-zA-Z\s]+$/; // Buchstaben und das Leerzeichen
+	var zahlen = /^[0-9]+$/; // Zahlen
 
 	// Für das Titel Feld
 	var titel = document.EntryForm.titel.value;
-	if(titel.length > 0){
-		//nichts zu machen, 
-	}else{
-
+	if(titel.length < 1){ // Das Titelfeld darf nicht leer bleiben.
 		// Falls bisher kein Feld fokussiert wurde, fokussiere das betreffende Feld
 		if (focused == false){
 		document.EntryForm.titel.focus();
 		focused = true;
 		}
 		document.EntryForm.titel.style.border = "solid red 1px";
-
 		returnWert = false;
-		
 	}
 
 
 		//Für den Buchautor
 	var autor = document.EntryForm.autor.value;
-	if(autor.match(buchstaben)){
-		//nichts zu machen
-	}else{
-	
-		if (focused == false){
-		document.EntryForm.autor.focus();
-		focused = true;
+
+		if(!(autor.match(buchstaben))){ // Falls der Wert im Feld "Autor" andere Zeichen, als Buchstaben enthält
+			if (focused == false){ // Falls noch kein Feld mit falschen Angaben gefunden wurde, wird dieses Feld markiert
+			document.EntryForm.autor.focus();
+			focused = true; // focused wird auf true gesetzt, damit eventuelle weitere Felder nicht fokussiert werden
+			}
+			document.EntryForm.autor.style.border = "solid red 1px"; // Das fehlerhafte Feld wird rot umrandet
+			returnWert = false; // da ein Fehler gefunden wurde, wird der wert auf falsch gesetzt - das Formular wird also nicht abgesendet
 		}
-		document.EntryForm.autor.style.border = "solid red 1px";
-		returnWert = false;
-	}
-
-
-	//Für den Vornamen
-	var vorname = document.EntryForm.vorname.value;
-	if(vorname.match(buchstaben)){
-		//nichts zu machen
-	}else{
-
-		if (focused == false){
-		document.EntryForm.vorname.focus();
-		focus = true;
-		}
-		document.EntryForm.vorname.style.border = "solid red 1px";
-		returnWert = false;
-	}
-
-		//Für den Namen
-	var name = document.EntryForm.name.value;
-	if(name.match(buchstaben)){
-		//nichts zu machen
-	}else{
-	
-		if (focused == false){
-		document.EntryForm.name.focus();
-		focused = true;
-		}
-		document.EntryForm.name.style.border = "solid red 1px";
-		returnWert = false;
-	}
 
 
 		//Für die ISBN
 	var isbn = document.EntryForm.isbn.value;
-	if(isbn.match(zahlen)){
-		// Überprüfe, ob Länge = 13 ist
-		if (isbn.length != 13){
+
+		// Überprüfe, ob die ISBN ausschließlich aus Zahlen besteht
+		if(isbn.match(zahlen)){
+			// Überprüfe, ob Länge = 13 ist
+			if (isbn.length != 13){
+
+				if (focused == false){
+				document.EntryForm.isbn.focus();
+				focused = true;
+				}
+				document.EntryForm.isbn.style.border = "solid red 1px";
+				returnWert = false;
+			}
+
+		}else{
 
 			if (focused == false){
 			document.EntryForm.isbn.focus();
@@ -84,24 +60,27 @@ function validateForm() {
 			document.EntryForm.isbn.style.border = "solid red 1px";
 			returnWert = false;
 		}
+	
 
-	}else{
-
-		if (focused == false){
-		document.EntryForm.isbn.focus();
-		focused = true;
-		}
-		document.EntryForm.isbn.style.border = "solid red 1px";
-		returnWert = false;
-	}
 
 	//Für das Erscheinungsjahr
 	var jahr = document.EntryForm.jahr.value;
-	//Übeprüft, ob jahr ausschließlich aus Zahlen besteht (Da das "Minus" nicht erlaubt ist, sind negative Zahlen ebenfalls ausgeschlossen)
-	if(jahr.match(zahlen)){
-		// Überprüfe, ob Länge = 13 ist
-		if (jahr.length != 4 || jahr > 2015){
-			
+
+		//Übeprüft, ob jahr ausschließlich aus Zahlen besteht (Da das "Minus" nicht erlaubt ist, sind negative Zahlen ebenfalls ausgeschlossen)
+		if(jahr.match(zahlen)){
+			// Überprüfe, ob Länge = 13 ist
+			if (jahr.length != 4 || jahr > 2015){
+				
+				if (focused == false){
+				document.EntryForm.jahr.focus();
+				focused = true;
+				}
+				document.EntryForm.jahr.style.border = "solid red 1px";
+				returnWert = false;
+			}
+
+		}else{
+
 			if (focused == false){
 			document.EntryForm.jahr.focus();
 			focused = true;
@@ -109,39 +88,54 @@ function validateForm() {
 			document.EntryForm.jahr.style.border = "solid red 1px";
 			returnWert = false;
 		}
-
-	}else{
-
-		if (focused == false){
-		document.EntryForm.jahr.focus();
-		focused = true;
-		}
-		document.EntryForm.jahr.style.border = "solid red 1px";
-		returnWert = false;
-	}
+	
 
 		//Für die Auflage
 	var auflage = document.EntryForm.auflage.value;
-	if(auflage.match(zahlen)){
-		// Nichts zu machen - negative Zahlen sind ebenfalls ausgeschlossen, da kein Minuszeichen enthalten sein darf.
-		
 
-	}else{
+		if(auflage.match(zahlen)){
+			// Nichts zu machen - negative Zahlen sind ebenfalls ausgeschlossen, da kein Minuszeichen enthalten sein darf.
+			
 
-		if (focused == false){
-		document.EntryForm.auflage.focus();
-		focused = true;
+		}else{
+
+			if (focused == false){
+			document.EntryForm.auflage.focus();
+			focused = true;
+			}
+			document.EntryForm.auflage.style.border = "solid red 1px";
+			returnWert = false;
+		}	
+	
+	//Für den Vornamen
+	var vorname = document.EntryForm.vorname.value;
+		if(!(vorname.match(buchstaben))){
+			if (focused == false){
+			document.EntryForm.vorname.focus();
+			focus = true;
+			}
+			document.EntryForm.vorname.style.border = "solid red 1px";
+			returnWert = false;
 		}
-		document.EntryForm.auflage.style.border = "solid red 1px";
-		returnWert = false;
-	}	
+
+		//Für den Namen
+	var name = document.EntryForm.name.value;
+		if(!(name.match(buchstaben))){
+			if (focused == false){
+			document.EntryForm.name.focus();
+			focused = true;
+			}
+			document.EntryForm.name.style.border = "solid red 1px";
+			returnWert = false;
+		}
 
 
-//Fehlermeldung, falls eine falsche Eingabe stattfand
+// Falls im Formular eine fehlerhafte Eingabe gefunden wurde, wird eine Fehlermeldung ausgegeben
  if (returnWert == false){
 		alert(unescape("Einige Eingaben sind fehlerhaft. Bitte %FCberpr%FCfen Sie ihre Eingaben"));
  }
-//Rückgabe des returnWertes (false, falls eine falsche Eingabe stattfand)
+
+//Rückgabe des returnWertes (false, falls im Formular eine falsche Angabe stand)
     return returnWert;
 }
 
