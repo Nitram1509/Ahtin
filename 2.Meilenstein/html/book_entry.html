@@ -30,13 +30,13 @@
 			<centerbox1>
 				<div class="schriftfarbe">
 
-				<div><input type="text" size="20" name="titel" ></div>
-				<div><input type="text" size="20" name="autor" ></div>
-				<div><input type="number" size="8" name="isbn" ></div>
-				<div><input type="number" size="8" name="kapitel" ></div>
-				<div><input type="number" size="8" name="jahr" ></div>
-				<div><input type="number" size="8" name="auflage" ></div>
-				<div><select name="art">
+				<div><input type="text" size="20" name="titel" required></div>
+				<div><input type="text" size="20" name="autor" required></div>
+				<div><input type="number" size="8" name="isbn" required></div>
+				<div><input type="number" size="8" name="kapitel" required></div>
+				<div><input type="number" size="8" name="jahr" required></div>
+				<div><input type="number" size="8" name="auflage" required></div>
+				<div><select name="art" required>
 								<option  value="eBook">eBook</option>
 								<option value="Newspaper">Newspaper</option>
 								<option value="Taschenbuch">Taschenbuch</option>
@@ -77,9 +77,9 @@
 
 
 			<rightbox>
-				<div><input type="text" size="14" name="vorname"></div>
-				<div><input type="text" size="14" name="name" ></div>
-				<div><input type="checkbox" size="14" name="filmfavorit" ></div>
+				<div><input type="text" size="14" name="vorname" required></div>
+				<div><input type="text" size="14" name="name" required></div>
+				<div><input type="checkbox" size="14" name="filmfavorit" required ></div>
 			</rightbox>
 
 		</div>

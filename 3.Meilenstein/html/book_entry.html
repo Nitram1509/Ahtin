@@ -1,0 +1,261 @@
+<DOCTYPE html>
+
+	<script>
+function validateForm() {
+
+	var returnWert = true;
+	var focused = false;
+
+	var buchstaben = /^[a-zA-Z]+$/;
+	var zahlen = /^[0-9]+$/;
+
+	// Für das Titel Feld
+	var titel = document.EntryForm.titel.value;
+	if(titel.length > 0){
+		//nichts zu machen, 
+	}else{
+
+		// Falls bisher kein Feld fokussiert wurde, fokussiere das betreffende Feld
+		if (focused == false){
+		document.EntryForm.titel.focus();
+		focused = true;
+		}
+		document.EntryForm.titel.style.border = "solid red 1px";
+
+		returnWert = false;
+		
+	}
+
+
+		//Für den Buchautor
+	var autor = document.EntryForm.autor.value;
+	if(autor.match(buchstaben)){
+		//nichts zu machen
+	}else{
+	
+		if (focused == false){
+		document.EntryForm.autor.focus();
+		focused = true;
+		}
+		document.EntryForm.autor.style.border = "solid red 1px";
+		returnWert = false;
+	}
+
+
+	//Für den Vornamen
+	var vorname = document.EntryForm.vorname.value;
+	if(vorname.match(buchstaben)){
+		//nichts zu machen
+	}else{
+
+		if (focused == false){
+		document.EntryForm.vorname.focus();
+		focus = true;
+		}
+		document.EntryForm.vorname.style.border = "solid red 1px";
+		returnWert = false;
+	}
+
+		//Für den Namen
+	var name = document.EntryForm.name.value;
+	if(name.match(buchstaben)){
+		//nichts zu machen
+	}else{
+	
+		if (focused == false){
+		document.EntryForm.name.focus();
+		focused = true;
+		}
+		document.EntryForm.name.style.border = "solid red 1px";
+		returnWert = false;
+	}
+
+
+		//Für die ISBN
+	var isbn = document.EntryForm.isbn.value;
+	if(isbn.match(zahlen)){
+		// Überprüfe, ob Länge = 13 ist
+		if (isbn.length != 13){
+
+			if (focused == false){
+			document.EntryForm.isbn.focus();
+			focused = true;
+			}
+			document.EntryForm.isbn.style.border = "solid red 1px";
+			returnWert = false;
+		}
+
+	}else{
+
+		if (focused == false){
+		document.EntryForm.isbn.focus();
+		focused = true;
+		}
+		document.EntryForm.isbn.style.border = "solid red 1px";
+		returnWert = false;
+	}
+
+	//Für das Erscheinungsjahr
+	var jahr = document.EntryForm.jahr.value;
+	//Übeprüft, ob jahr ausschließlich aus Zahlen besteht (Da das "Minus" nicht erlaubt ist, sind negative Zahlen ebenfalls ausgeschlossen)
+	if(jahr.match(zahlen)){
+		// Überprüfe, ob Länge = 13 ist
+		if (jahr.length != 4 || jahr > 2015){
+			
+			if (focused == false){
+			document.EntryForm.jahr.focus();
+			focused = true;
+			}
+			document.EntryForm.jahr.style.border = "solid red 1px";
+			returnWert = false;
+		}
+
+	}else{
+
+		if (focused == false){
+		document.EntryForm.jahr.focus();
+		focused = true;
+		}
+		document.EntryForm.jahr.style.border = "solid red 1px";
+		returnWert = false;
+	}
+
+		//Für die Auflage
+	var auflage = document.EntryForm.auflage.value;
+	if(auflage.match(zahlen)){
+		// Nichts zu machen - negative Zahlen sind ebenfalls ausgeschlossen, da kein Minuszeichen enthalten sein darf.
+		
+
+	}else{
+
+		if (focused == false){
+		document.EntryForm.auflage.focus();
+		focused = true;
+		}
+		document.EntryForm.auflage.style.border = "solid red 1px";
+		returnWert = false;
+	}	
+
+
+//Fehlermeldung, falls eine falsche Eingabe stattfand
+ if (returnWert == false){
+		alert(unescape("Einige Eingaben sind fehlerhaft. Bitte %FCberpr%FCfen Sie ihre Eingaben"));
+ }
+//Rückgabe des returnWertes (false, falls eine falsche Eingabe stattfand)
+    return returnWert;
+}
+
+
+// function onlyLetters(zeichenKette){
+// 	if zeichenKette.search(/^[a-zA-Z]+$/) == -1) 
+// 	{alert("Ungültige Eingabe!")}
+// }
+
+	</script>
+
+
+	<html>
+		<head>	
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="..\css\bookLayout.css">
+			<link rel="stylesheet" type="text/css" href="..\css\layout.css">
+		
+			<title>Formular</title>
+		</head>
+		<body >
+
+			
+
+<div style=""text-align: center;""> <div style="width: 800px; margin-left: 150px; text-align: left;">
+<form  name = "EntryForm" action="http://martinakraus.net/createBookEntry.php" method="get" onsubmit ="return validateForm()">
+<mainbox>
+			<leftbox class="schriftfarbe" >
+			<div class="schriftArt">	
+				<div>Titel des Buches:</div>	
+				<div>Buchautor:</div>
+				<div>ISBN:</div>	
+				<div>Kapitel:</div>
+				<div>Erscheinungsjahr:</div>
+				<div>Auflage:</div>	
+				<div>Art des Buches:</div>
+				<div>Genre:</div>
+			</div>
+			</leftbox>
+
+			<centerbox1>
+				<div class="schriftfarbe">
+
+				<div><input type="text" size="20" name="titel" required></div>
+				<div><input type="text" size="20" name="autor" required></div>
+				<div><input type="number" size="8" name="isbn" required></div>
+				<div><input type="number" size="8" name="kapitel" required></div>
+				<div><input type="number" size="8" name="jahr" required></div>
+				<div><input type="number" size="8" name="auflage" required></div>
+				<div><select name="art" required>
+								<option  value="eBook">eBook</option>
+								<option value="Newspaper">Newspaper</option>
+								<option value="Taschenbuch">Taschenbuch</option>
+								<option value="Lexikon">Lexikon</option>
+								<option selected value="Hardcover">Hardcover</option>
+								<option value="Paperback">Paperback</option>
+					</select>
+
+				<div>
+
+					<table class="checkbox">
+					
+					<tr><td><div><input checked="checked" type="checkbox" name="Horror" value="Horror">Horror</div> </td>
+						<td><div><input type="checkbox" name="genre" value="Doku">Doku</div></td>
+
+					<tr><td><div><input type="checkbox" name="genre" value="Psycho">Psycho</div> </td>
+					<td><div><input type="checkbox" name="genre" value="Komoedie">Kom&ouml;die</div></td>
+
+
+					<tr><td><div><input type="checkbox" name="genre" value="Krimi">Krimi</div></td>
+					<td><div><input type="checkbox" name="genre" value="Romanze">Romanze</div>	</td>
+
+				</table>
+				</div>	
+				</div>
+
+
+				</div>
+			</centerbox1>
+
+			<centerbox2 class="schriftfarbe">
+				<div class="schriftArt">
+					<div>Dein Vorname:</div>	
+					<div>Dein Nachname:</div>
+					<div>Mein Favorit</div>
+				</div>	
+			</centerbox2>	
+
+
+			<rightbox>
+				<div><input type="text" size="14" name="vorname" required></div>
+				<div><input type="text" size="14" name="name" required></div>
+				<div><input type="checkbox" size="14" name="filmfavorit" required ></div>
+			</rightbox>
+
+		</div>
+  </div>
+</mainbox>
+		<div id="submitbutton" ;><input class="submitbutton" type="submit" value="Absenden" ></div>
+
+</form>
+  <heading>
+			<p id="ueberschrift" class="schriftFarbe">Buch anlegen</p>
+			</heading>	
+			<div class="table">
+				
+					
+		
+					
+					
+				
+				
+				
+			</div>
+			
+		</body>
+	</html>
