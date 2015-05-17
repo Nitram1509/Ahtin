@@ -1,4 +1,3 @@
-//read JSON data: http://www.w3schools.com/json/json_example.asp 
 
 {
 "romandata": [
@@ -73,7 +72,6 @@
 	"ISBN": 9783518035849,
 	"erscheinungsjahr": 1986,
 	"auflage": 20
-	},flage":
 	},
 	{
 	"autor": "Noah Gordon",
