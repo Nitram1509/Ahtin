@@ -5,51 +5,38 @@
 			<title>3.Meilenstein</title>
 			<link rel="stylesheet" type="text/css" href="..\css\layout.css">
 			<link rel="stylesheet" type="text/css" href="..\css\home.css">
-			<link rel="stylesheet" type="text/css" href="..\css\book.css">		
+			<link rel="stylesheet" type="text/css" href="..\css\book.css">	
+			<script src= "../js/book.js"></script>			
+			
 		</head>
 		<body>
 			<div style="width: 1100px;">
 				<p id=ueberschrift class="schriftFarbe" >Meine Bücher</p>
 				
 				<div style ="right:100px;"id="button">
-					<input type="button" id="horror"  value="Horror" onclick="horrorTable()">
-					<input type="button" id="roman"  value="Roman" onclick="romanTable()">
+					<input type="button" id="horror"  value="Horror" onclick="table('../Json/horror_books.json',1)">
+					<input type="button" id="roman"  value="Roman" onclick="table('../Json/roman_books.json',2)">
 				</div>
 			
 				<div id="grundlayout"> <p id="tabelle">FEHLER</p> </div>
 
 			</div>			
-			<script>
-				//Ladet die Horrotabelle als erstes
-			    horrorTable();
+	
+		<script>
+		//Ladet die Horrotabelle als erstes
+			    table("../Json/horror_books.json",1);
 				
 				//Fokusiert die tabelle an Horror zu beginn an
 				document.getElementById("horror").focus();
 				
-				function romanTable(){
-
+				function table(url,number) {
 					var xmlhttp = new XMLHttpRequest();
-					var url = "../Json/roman_books.json";
 					xmlhttp.onreadystatechange = function() {
 						if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 							//console.log(xmlhttp.responseText)
-							var myArr = JSON.parse(xmlhttp.responseText);		
-							createRomanTable(myArr);
-							
-							}
-					}
-					xmlhttp.open("GET", url, true);
-					xmlhttp.send();
-					//console.log(xmlhttp.responseText)
-				}
-				function horrorTable() {
-					var xmlhttp = new XMLHttpRequest();
-					var url = "../Json/horror_books.json";
-					xmlhttp.onreadystatechange = function() {
-						if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-							//console.log(xmlhttp.responseText)
-							var myArr = JSON.parse(xmlhttp.responseText);		
-							createHorrorTable(myArr);
+							var myArr = JSON.parse(xmlhttp.responseText);
+							if(number == 1)	createTable(myArr.horrordata);
+							else if(number == 2)createTable(myArr.romandata);
 							
 						}
 					}
@@ -58,50 +45,28 @@
 					//console.log(xmlhttp.responseText)
 					
 				}
-				function createHorrorTable(myArr) {
+				function createTable(myArr) {
 					var out = templateTable();
-					for(inhalt = 0; inhalt < myArr.horrordata.length; inhalt++){
+					for(inhalt = 0; inhalt < myArr.length; inhalt++){
 						out += "<tr class='schriftFarbe'><td>" +
-						myArr.horrordata[inhalt].autor +
+						myArr[inhalt].autor +
 						"</td><td>" +
-						myArr.horrordata[inhalt].titel +
+						myArr[inhalt].titel +
 						"</td><td>" +
-						myArr.horrordata[inhalt].kapitel +
+						myArr[inhalt].kapitel +
 						"</td><td>" +
-						myArr.horrordata[inhalt].buchart +
+						myArr[inhalt].buchart +
 						"</td><td>" +
-						myArr.horrordata[inhalt].ISBN +
+						myArr[inhalt].ISBN +
 						"</td><td>" +
-						myArr.horrordata[inhalt].erscheinungsjahr +
+						myArr[inhalt].erscheinungsjahr +
 						"</td><td>" +
-						myArr.horrordata[inhalt].auflage +
+						myArr[inhalt].auflage +
 						"</td></tr>";
 					}
 					out += "</table>";
 					document.getElementById("tabelle").innerHTML = out;
-				}
-				function createRomanTable(myArr) {
-					var out = templateTable();
-					for(inhalt = 0; inhalt < myArr.romandata.length; inhalt++){
-						out += "<tr class='schriftFarbe'><td>" +
-						myArr.romandata[inhalt].autor +
-						"</td><td>" +
-						myArr.romandata[inhalt].titel +
-						"</td><td>" +
-						myArr.romandata[inhalt].kapitel +
-						"</td><td>" +
-						myArr.romandata[inhalt].buchart +
-						"</td><td>" +
-						myArr.romandata[inhalt].ISBN +
-						"</td><td>" +
-						myArr.romandata[inhalt].erscheinungsjahr +
-						"</td><td>" +
-						myArr.romandata[inhalt].auflage +
-						"</td></tr>";
-					}
-					out += "</table>";
-					document.getElementById("tabelle").innerHTML = out;
-				}					
+				}				
 				
 				function templateTable(){
 					var out = "<table class='templateTable'>"+
@@ -122,10 +87,11 @@
 					"</th></tr>";
 					return out;
 				}
-				
-					
-					
-			</script>
+		
+		
+		</script>
+	
+	
 		</body>
 		
 	</html>
