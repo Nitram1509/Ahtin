@@ -1,0 +1,25 @@
+body{
+background-color: rgb(153,217,234);
+font-size:18px;
+
+}
+.table {
+    display:table;
+}
+.table div {
+    display:table-row;
+	
+}
+.table div div {
+	display:table-cell;
+	border-spacing:8px;	
+    width:50%;
+}
+div{
+/*border: 1px solid #000;*/
+}
+.zweiteReihe{
+	position:absolute;
+	left:300px
+
+}

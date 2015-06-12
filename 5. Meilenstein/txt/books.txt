@@ -1,0 +1,6 @@
+jsdjd, hghg, 1 Kapitel, Hardcover, 1111111111111, 1989, 2.Auflage;
+jsdjd, hghg, 1 Kapitel, Hardcover, 1111111111111, 1989, 2.Auflage;
+asd, asdasd, 123 Kapitel, Hardcover, 1111111111111, 1999, 123.Auflage;
+jsdjd, asdasd, 1 Kapitel, Hardcover, 1111111111111, 1999, 1.Auflage;
+jsdjd, asdasd, 1 Kapitel, Hardcover, 1111111111111, 1999, 1.Auflage;
+jsdjd, asdasd, 1 Kapitel, Hardcover, 1111111111111, 1999, 1.Auflage;

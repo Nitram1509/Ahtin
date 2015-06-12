@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+		 <meta charset="UTF-8">
+			<title>3.Meilenstein</title>
+			<link rel="stylesheet" type="text/css" href="..\css\layout.css">
+			<link rel="stylesheet" type="text/css" href="..\css\home.css">
+			<link rel="stylesheet" type="text/css" href="..\css\book.css">	
+			<script src= "../js/book.js"></script>			
+			
+		</head>
+		<body>
+			<div style="width: 1100px;">
+				<p id=ueberschrift class="schriftFarbe" >Meine Bücher</p>
+				
+				<div style ="right:100px;"id="button">
+					<input type="button" id="horror"  value="Horror" onclick="table('../php/getBooks.php?art=horror',1)">
+					<input type="button" id="roman"  value="Roman" onclick="table('../php/getBooks.php?art=roman',2)">
+				</div>
+			
+				<div id="grundlayout"> <p id="tabelle">FEHLER</p> </div>
+
+			</div>			
+	
+		<script>
+		//Ladet die Horrotabelle als erstes
+			    table("../php/getBooks.php?art=horror",1);
+				
+				//Fokusiert die tabelle an Horror zu beginn an
+				document.getElementById("horror").focus();
+				
+				function table(url,number) {
+					var xmlhttp = new XMLHttpRequest();
+					xmlhttp.onreadystatechange = function() {
+						if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+							//console.log(xmlhttp.responseText)
+							var myArr = JSON.parse(xmlhttp.responseText);
+							if(number == 1)	createTable(myArr.horrordata);
+							else if(number == 2)createTable(myArr.romandata);
+							
+						}
+					}
+					xmlhttp.open("GET", url, true);
+					xmlhttp.send();
+					//console.log(xmlhttp.responseText)
+					
+				}
+				function createTable(myArr) {
+					var out = templateTable();
+					for(inhalt = 0; inhalt < myArr.length; inhalt++){
+						out += "<tr class='schriftFarbe'><td>" +
+						myArr[inhalt].autor +
+						"</td><td>" +
+						myArr[inhalt].titel +
+						"</td><td>" +
+						myArr[inhalt].kapitel +
+						"</td><td>" +
+						myArr[inhalt].buchart +
+						"</td><td>" +
+						myArr[inhalt].ISBN +
+						"</td><td>" +
+						myArr[inhalt].erscheinungsjahr +
+						"</td><td>" +
+						myArr[inhalt].auflage +
+						"</td></tr>";
+					}
+					out += "</table>";
+					document.getElementById("tabelle").innerHTML = out;
+				}				
+				
+				function templateTable(){
+					var out = "<table class='templateTable'>"+
+					"<tr><th>" +
+					"Autor" +
+					"</th><th>" +
+					"Titel" +
+					"</th><th>" +
+					"Kapitel" +
+					"</th><th>" +
+					"Buchart" +
+					"</th><th>" +
+					"ISBN" +
+					"</th><th>" +
+					"Erscheinungsjahr" +
+					"</th><th>" +
+					"Auflage" +
+					"</th></tr>";
+					return out;
+				}
+		
+		
+		</script>
+	
+	
+		</body>
+		
+	</html>

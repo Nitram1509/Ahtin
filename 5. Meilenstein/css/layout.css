@@ -1,0 +1,115 @@
+
+/*Bezieht sich auf die Überschrift*/
+#ueberschrift{
+	font-size:22px;
+	font-family: 'Arial Black';
+}
+
+.checkbox{
+	color:black;
+	font-size: 14px
+	font-weight:bold;
+}
+.schriftFarbe{
+	color: rgb(63,72,204);
+
+}
+
+.schriftArt{
+	font-family: 'Arial Black';
+	font-size: 16px;
+}
+
+.submitbutton{
+	width: 300px;
+	height: 40px;
+	color:rgb(63,72,204);
+	font-family: "Arial Black";
+	font-size:16px;
+	background-color: 3399FF;
+	border-color: rgb(63,72,204);
+	border-width: 3px;
+	border-style: solid;
+
+}
+.submitbutton:hover{
+	background-color: 6666FF;
+	cursor: pointer;
+}
+#bildschrift{
+	font-size:72px;
+}
+/*Betrifft nur das Titelbild. */
+#picture{
+	width: 400px;
+    height: 245px;
+	background-color: rgb(0,0,0);
+}
+/*Für den Rahmen für das Titelbild und das Menü*/
+.rahmen{
+	border-color: rgb(63,72,204);
+	border-width: 6px;
+	border-style: solid;
+}
+/*Ist für das Menü zuständig*/
+#menu{
+	background-color: rgb(0,162,232);	
+	width:128px;
+}
+
+#submitbutton{
+	position:fixed;
+	top:400px;
+	left:450px;
+	background-color: rgb(0,162,232);
+	width:75px;
+}
+a:link, a:visited {
+    display: block;
+    font-weight: bold;
+    color: rgb(0,0,0);
+    background-color: rgb(0,162,232);
+    width: 120px;
+    text-align: center;
+    padding: 4px;
+    text-decoration: none;
+}
+a:hover {
+    background-color: rgb(63,72,204);
+}
+
+heading{
+	position: absolute;
+	left:320px;
+}
+
+mainbox{
+
+}
+
+leftbox{
+	margin-top: 100px;
+	border-radius: 0px 0.5em 0.5em;
+	/*border: 1px solid;*/
+	float: left;
+}
+centerbox1{
+	margin-top: 100px;
+	border-radius: 0px 0.5em 0.5em;
+	/*border: 1px solid;*/
+	float: left;
+}
+centerbox2{
+	margin-left: 150px;
+	margin-top: 100px;
+	border-radius: 0px 0.5em 0.5em;
+	/*border: 1px solid;*/
+	float: left;
+}
+
+rightbox{
+	margin-top: 100px;
+	border-radius: 0px 0.5em 0.5em;
+	/*border: 1px solid;*/
+	float: left;
+}
