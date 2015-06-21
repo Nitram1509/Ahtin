@@ -58,7 +58,7 @@
 	}
 
 	//Favoriten Eintrag in die Datenbank-----------------------------
-	
+		
 	$sql_user = "SELECT id FROM User 
 					WHERE vorname = '".$_GET["vorname"]."' 
 					AND	  nachname = '".$_GET["name"]."'";
@@ -67,10 +67,17 @@
 	$sql_buch = "SELECT isbn FROM Buch WHERE isbn = ".$_GET["isbn"]." ; ";
 	$row_buch = mysqli_fetch_assoc(mysqli_query($conn, $sql_buch));
 	
+	//Überprüft, ob eintrag schon vorhanden ist
+	$sql_favorit = "SELECT * FROM favoriten WHERE 
+					user_id =  ".$row_user["id"]." AND buch_isbn = ".$row_buch["isbn"].";";
+	$row_fav =  mysqli_fetch_assoc(mysqli_query($conn, $sql_favorit));			
 	
-	$sql_favorit = " INSERT INTO favoriten (user_id, buch_isbn, favorit) VALUES
+	if($row_fav["fav_id"] == ""){
+		$sql_favorit = " INSERT INTO favoriten (user_id, buch_isbn, favorit) VALUES
 					( ".$row_user["id"].", ".$row_buch["isbn"].",'".$_GET["filmfavorit"]."' );";
-	mysqli_query($conn, $sql_favorit);
+		mysqli_query($conn, $sql_favorit);	
+	}
+
 	
 	
 	mysqli_close($conn);
