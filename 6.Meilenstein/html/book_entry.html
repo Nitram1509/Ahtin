@@ -159,9 +159,9 @@ function validateForm() {
 		<body >
 
 			
-
+<!-- Hinweis: onsubmit ="return validateForm()" wurde zu Testzwecken entfernt -->
 <div style=""text-align: center;""> <div style="width: 800px; margin-left: 150px; text-align: left;">
-<form  name = "EntryForm" action="..\php\buchanlegen.php" method="get" onsubmit ="return validateForm()">
+<form  name = "EntryForm" action="..\php\buchanlegen.php" method="get" >
 <mainbox>
 			<leftbox class="schriftfarbe" >
 			<div class="schriftArt">	
@@ -179,13 +179,13 @@ function validateForm() {
 			<centerbox1>
 				<div class="schriftfarbe">
 
-				<div><input type="text" size="20" name="titel" required></div>
-				<div><input type="text" size="20" name="autor" required></div>
-				<div><input type="number" size="8" name="isbn" required></div>
-				<div><input type="number" size="8" name="kapitel" required></div>
-				<div><input type="number" size="8" name="jahr" required></div>
-				<div><input type="number" size="8" name="auflage" required></div>
-				<div><select name="art" required>
+				<div><input  size="20" name="titel" ></div>
+				<div><input  size="20" name="autor" ></div>
+				<div><input  size="8" name="isbn" ></div>
+				<div><input  size="8" name="kapitel" ></div>
+				<div><input  size="8" name="jahr" ></div>
+				<div><input  size="8" name="auflage"></div>
+				<div><select name="art" >
 								<option  value="eBook">eBook</option>
 								<option value="Newspaper">Newspaper</option>
 								<option value="Taschenbuch">Taschenbuch</option>

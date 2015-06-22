@@ -1,5 +1,10 @@
 <?php
+	/* Diese Datei sucht je nach auswahl alle Roman oder Horror Bücher und schreibt
+		sie in Json format auf. 
 
+
+
+	*/
 	$servername = "localhost";
 	$username = "root";//Nicht vorhanden
 	$password = "";//Nicht vorhanden
@@ -14,37 +19,40 @@
 	}
 
     if ($_GET["art"] == "horror") {
-        $art = "Horror";
+        $genre = "Horror";
         $bezeichnung = "horrordata";
 
     } else if ($_GET["art"] == "roman") {
-        $art = "Roman";
+        $genre = "Roman";
         $bezeichnung = "romandata";
     }
 
-    $sql = "SELECT * FROM Buch  ";
+	$sql = "SELECT * FROM Buch WHERE  genre_id = (SELECT id FROM Genre WHERE genre = '".$genre."')";  
     $result = mysqli_query($conn, $sql);
 
-
-    echo "{  
+   
+	$json = "{  
     		\"$bezeichnung\": [";
-
 	if (mysqli_num_rows($result) > 0) {
-    // output data of each row
   		while($row = mysqli_fetch_assoc($result)) {
-	        echo 	"\"autor\": \"Stephen King\",
+  			$sql_autor = "SELECT name FROM Autor WHERE id = ". $row["autor_id"]." ; ";
+  			$sql_art = "SELECT art FROM Art WHERE id = ". $row["art_id"]."; ";
+			$row_autor = mysqli_fetch_assoc( mysqli_query($conn, $sql_autor) );
+			$row_art = mysqli_fetch_assoc( mysqli_query($conn, $sql_art) );	
+			$json.=	"{
+					\"autor\": \"".$row_autor["name"]."\",
 					\"titel\": \"". $row["titel"]."\",
 					\"kapitel\": ". $row["kapitel"].",
-					\"buchart\": \"Taschenbuch\",
-					\"ISBN\": ". $row["isbn"].",
+					\"buchart\": \"".$row_art["art"]."\",
+					\"ISBN\": ".$row["isbn"].",
 					\"erscheinungsjahr\": ". $row["jahr"].",
 					\"auflage\": ". $row["auflage"]."
-					}";
-
+					},";
 		}
-
+		$json = substr($json, 0, -1); //schneidet das letzte zeichen ab
 	}	
+	
+	echo $json."] }";
 
-	echo "] }";
-
-?>
+	mysqli_close($conn);
+	?>
